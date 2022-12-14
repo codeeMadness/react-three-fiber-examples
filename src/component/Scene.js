@@ -1,33 +1,36 @@
-import { Physics } from "@react-three/cannon";
 import { Canvas } from "@react-three/fiber";
-import { useEffect, useState } from "react";
-import Cube from "./Cube";
-import Plane from "./Plane";
+import { Suspense } from "react";
+import Model from "./Model";
+import Rig from "./Rig";
 import classes from "./Scene.module.css";
 
 const Scene = () => {
-  const [ready, set] = useState(false);
-  useEffect(() => {
-    const timeout = setTimeout(() => set(true), 1000);
-    return () => clearTimeout(timeout);
-  }, []);
   return (
     <div className={classes["canvas-container"]}>
-      <Canvas dpr={[1, 2]} shadows camera={{ position: [-5, 5, 5], fov: 50 }}>
+      <Canvas shadows camera={{ position: [1, 1.5, 2.5], fov: 50 }}>
         <ambientLight />
-        <spotLight
-          angle={0.25}
-          penumbra={0.5}
-          position={[10, 10, 5]}
+        <directionalLight
+          position={[-5, 5, 5]}
           castShadow
+          shadow-mapSize-width={1024}
+          shadow-mapSize-height={1024}
         />
-        <Physics>
-          <Plane />
-          <Cube position={[0, 5, 0]} />
-          <Cube position={[0.45, 7, -0.25]} />
-          <Cube position={[-0.45, 9, 0.25]} />
-          {ready && <Cube position={[-0.45, 10, 0.25]} />}
-        </Physics>
+        <group position={[0, -1, 0]}>
+          <Suspense fallback={null}>
+            <Model pose={4} position={[0, 0, 0]} />
+            <Model pose={1} position={[1, 0, -1]} />
+            <Model pose={2} position={[-1, 0, -1]} />
+          </Suspense>
+        </group>
+        <mesh
+          rotation={[-Math.PI/2, 0, 0]}
+          position={[0, -1, 0]}
+          receiveShadow
+        >
+          <planeBufferGeometry args={[10, 10, 1, 1]} />
+          <shadowMaterial transparent opacity={0.2} />
+        </mesh>
+        <Rig />
       </Canvas>
     </div>
   );
