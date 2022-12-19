@@ -5,10 +5,6 @@ Play around with [React Three Fiber](https://github.com/pmndrs/react-three-fiber
 
 ## Examples
 * [x] Main - load simple box
-<a href="https://codesandbox.io/s/rrppl0y8l4">
-    <img src="/docs/basic-app.gif" />
-</a>
-
 * [x] Simple Physics
 * [x] Gltf Animations
 * [ ] Gltf Animations with Keys control
