@@ -8,7 +8,7 @@ Play around with [React Three Fiber](https://github.com/pmndrs/react-three-fiber
 * [x] Simple Physics
 * [x] Gltf Animations
 * [ ] Gltf Animations with Keys control
-* [ ] Model with terrain
+* [ ] Character in terrain
 
 ## Installation
 * Clone Project on Github
