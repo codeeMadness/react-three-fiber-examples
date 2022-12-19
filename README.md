@@ -1,7 +1,7 @@
 <h1 align="center">Welcome to React Three Fiber Examples 👋</h1>  
 
 ## About
-Play around with React Three Fiber.
+Play around with [React Three Fiber](https://github.com/pmndrs/react-three-fiber).
 
 ## Examples
 * [x] Main - load simple box
